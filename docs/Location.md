@@ -5,6 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**address_line1** | **str** |  | [optional] 
+**address_line2** | **str** |  | [optional] 
 **city** | **str** |  | [optional] 
 **region** | **str** |  | [optional] 
 **region_code** | **str** |  | [optional] 

@@ -1,10 +1,13 @@
 # IPCountry
 
 
-## Properties
+## Enum
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+* `DOMESTIC` (value: `'DOMESTIC'`)
+
+* `FOREIGN` (value: `'FOREIGN'`)
+
+* `UNKNOWN` (value: `'UNKNOWN'`)
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

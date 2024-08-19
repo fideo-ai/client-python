@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **last_seen_ms** | **int** |  | [optional] 
 **observations** | **int** |  | [optional] 
 **confidence** | **float** |  | [optional] 
+**value** | **str** |  | [optional] 
 **md5** | **str** |  | [optional] 
 **sha1** | **str** |  | [optional] 
 **sha256** | **str** |  | [optional] 
