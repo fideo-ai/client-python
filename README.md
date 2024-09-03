@@ -96,8 +96,6 @@ All URIs are relative to *https://api.fideo.ai*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *SignalsApi* | [**signals_post**](docs/SignalsApi.md#signals_post) | **POST** /signals | 
-*SignalsApi* | [**v3_verify_signals_post**](docs/SignalsApi.md#v3_verify_signals_post) | **POST** /v3/verify.signals | 
-*VerifyApi* | [**v3_verify_match_post**](docs/VerifyApi.md#v3_verify_match_post) | **POST** /v3/verify.match | 
 *VerifyApi* | [**verify_post**](docs/VerifyApi.md#verify_post) | **POST** /verify | 
 
 
@@ -117,7 +115,6 @@ Class | Method | HTTP request | Description
  - [Location](docs/Location.md)
  - [LocationReq](docs/LocationReq.md)
  - [LocationType](docs/LocationType.md)
- - [MatchResponse](docs/MatchResponse.md)
  - [MultiFieldReq](docs/MultiFieldReq.md)
  - [MultiFieldReqWithOptions](docs/MultiFieldReqWithOptions.md)
  - [Name](docs/Name.md)
@@ -126,12 +123,13 @@ Class | Method | HTTP request | Description
  - [Phone](docs/Phone.md)
  - [Photo](docs/Photo.md)
  - [ScoreDetails](docs/ScoreDetails.md)
+ - [SignalsPost200Response](docs/SignalsPost200Response.md)
  - [SignalsResponseV0](docs/SignalsResponseV0.md)
  - [SignalsResponseV20240424](docs/SignalsResponseV20240424.md)
  - [SocialProfileDetails](docs/SocialProfileDetails.md)
  - [SocialProfileReq](docs/SocialProfileReq.md)
  - [SocialProfileUrls](docs/SocialProfileUrls.md)
- - [V3VerifySignalsPost200Response](docs/V3VerifySignalsPost200Response.md)
+ - [VerifyResponse](docs/VerifyResponse.md)
 
 
 <a id="documentation-for-authorization"></a>

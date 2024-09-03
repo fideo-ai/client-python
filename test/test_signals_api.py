@@ -33,12 +33,6 @@ class TestSignalsApi(unittest.TestCase):
         """
         pass
 
-    def test_v3_verify_signals_post(self) -> None:
-        """Test case for v3_verify_signals_post
-
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

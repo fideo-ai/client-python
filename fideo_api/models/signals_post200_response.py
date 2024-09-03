@@ -24,11 +24,11 @@ from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-V3VERIFYSIGNALSPOST200RESPONSE_ONE_OF_SCHEMAS = ["SignalsResponseV0", "SignalsResponseV20240424"]
+SIGNALSPOST200RESPONSE_ONE_OF_SCHEMAS = ["SignalsResponseV0", "SignalsResponseV20240424"]
 
-class V3VerifySignalsPost200Response(BaseModel):
+class SignalsPost200Response(BaseModel):
     """
-    V3VerifySignalsPost200Response
+    SignalsPost200Response
     """
     # data type: SignalsResponseV0
     oneof_schema_1_validator: Optional[SignalsResponseV0] = None
@@ -55,7 +55,7 @@ class V3VerifySignalsPost200Response(BaseModel):
 
     @field_validator('actual_instance')
     def actual_instance_must_validate_oneof(cls, v):
-        instance = V3VerifySignalsPost200Response.model_construct()
+        instance = SignalsPost200Response.model_construct()
         error_messages = []
         match = 0
         # validate data type: SignalsResponseV0
@@ -70,10 +70,10 @@ class V3VerifySignalsPost200Response(BaseModel):
             match += 1
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in V3VerifySignalsPost200Response with oneOf schemas: SignalsResponseV0, SignalsResponseV20240424. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when setting `actual_instance` in SignalsPost200Response with oneOf schemas: SignalsResponseV0, SignalsResponseV20240424. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when setting `actual_instance` in V3VerifySignalsPost200Response with oneOf schemas: SignalsResponseV0, SignalsResponseV20240424. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when setting `actual_instance` in SignalsPost200Response with oneOf schemas: SignalsResponseV0, SignalsResponseV20240424. Details: " + ", ".join(error_messages))
         else:
             return v
 
@@ -103,10 +103,10 @@ class V3VerifySignalsPost200Response(BaseModel):
 
         if match > 1:
             # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into V3VerifySignalsPost200Response with oneOf schemas: SignalsResponseV0, SignalsResponseV20240424. Details: " + ", ".join(error_messages))
+            raise ValueError("Multiple matches found when deserializing the JSON string into SignalsPost200Response with oneOf schemas: SignalsResponseV0, SignalsResponseV20240424. Details: " + ", ".join(error_messages))
         elif match == 0:
             # no match
-            raise ValueError("No match found when deserializing the JSON string into V3VerifySignalsPost200Response with oneOf schemas: SignalsResponseV0, SignalsResponseV20240424. Details: " + ", ".join(error_messages))
+            raise ValueError("No match found when deserializing the JSON string into SignalsPost200Response with oneOf schemas: SignalsResponseV0, SignalsResponseV20240424. Details: " + ", ".join(error_messages))
         else:
             return instance
 

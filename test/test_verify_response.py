@@ -15,10 +15,10 @@
 
 import unittest
 
-from fideo_api.models.match_response import MatchResponse
+from fideo_api.models.verify_response import VerifyResponse
 
-class TestMatchResponse(unittest.TestCase):
-    """MatchResponse unit test stubs"""
+class TestVerifyResponse(unittest.TestCase):
+    """VerifyResponse unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestMatchResponse(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> MatchResponse:
-        """Test MatchResponse
+    def make_instance(self, include_optional) -> VerifyResponse:
+        """Test VerifyResponse
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `MatchResponse`
+        # uncomment below to create an instance of `VerifyResponse`
         """
-        model = MatchResponse()
+        model = VerifyResponse()
         if include_optional:
-            return MatchResponse(
+            return VerifyResponse(
                 address_line1 = '',
                 address_line2 = '',
                 city = '',
@@ -75,12 +75,12 @@ class TestMatchResponse(unittest.TestCase):
                     ]
             )
         else:
-            return MatchResponse(
+            return VerifyResponse(
         )
         """
 
-    def testMatchResponse(self):
-        """Test MatchResponse"""
+    def testVerifyResponse(self):
+        """Test VerifyResponse"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

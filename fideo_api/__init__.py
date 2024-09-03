@@ -47,7 +47,6 @@ from fideo_api.models.ip_address import IpAddress
 from fideo_api.models.location import Location
 from fideo_api.models.location_req import LocationReq
 from fideo_api.models.location_type import LocationType
-from fideo_api.models.match_response import MatchResponse
 from fideo_api.models.multi_field_req import MultiFieldReq
 from fideo_api.models.multi_field_req_with_options import MultiFieldReqWithOptions
 from fideo_api.models.name import Name
@@ -56,9 +55,10 @@ from fideo_api.models.person_name_req import PersonNameReq
 from fideo_api.models.phone import Phone
 from fideo_api.models.photo import Photo
 from fideo_api.models.score_details import ScoreDetails
+from fideo_api.models.signals_post200_response import SignalsPost200Response
 from fideo_api.models.signals_response_v0 import SignalsResponseV0
 from fideo_api.models.signals_response_v20240424 import SignalsResponseV20240424
 from fideo_api.models.social_profile_details import SocialProfileDetails
 from fideo_api.models.social_profile_req import SocialProfileReq
 from fideo_api.models.social_profile_urls import SocialProfileUrls
-from fideo_api.models.v3_verify_signals_post200_response import V3VerifySignalsPost200Response
+from fideo_api.models.verify_response import VerifyResponse

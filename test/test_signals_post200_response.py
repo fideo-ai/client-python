@@ -15,10 +15,10 @@
 
 import unittest
 
-from fideo_api.models.v3_verify_signals_post200_response import V3VerifySignalsPost200Response
+from fideo_api.models.signals_post200_response import SignalsPost200Response
 
-class TestV3VerifySignalsPost200Response(unittest.TestCase):
-    """V3VerifySignalsPost200Response unit test stubs"""
+class TestSignalsPost200Response(unittest.TestCase):
+    """SignalsPost200Response unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,16 +26,16 @@ class TestV3VerifySignalsPost200Response(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> V3VerifySignalsPost200Response:
-        """Test V3VerifySignalsPost200Response
+    def make_instance(self, include_optional) -> SignalsPost200Response:
+        """Test SignalsPost200Response
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `V3VerifySignalsPost200Response`
+        # uncomment below to create an instance of `SignalsPost200Response`
         """
-        model = V3VerifySignalsPost200Response()
+        model = SignalsPost200Response()
         if include_optional:
-            return V3VerifySignalsPost200Response(
+            return SignalsPost200Response(
                 name = fideo_api.models.name_with_alias.NameWithAlias(
                     first = '', 
                     last = '', 
@@ -147,12 +147,12 @@ class TestV3VerifySignalsPost200Response(unittest.TestCase):
                     net_worth = '', )
             )
         else:
-            return V3VerifySignalsPost200Response(
+            return SignalsPost200Response(
         )
         """
 
-    def testV3VerifySignalsPost200Response(self):
-        """Test V3VerifySignalsPost200Response"""
+    def testSignalsPost200Response(self):
+        """Test SignalsPost200Response"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -27,12 +27,6 @@ class TestVerifyApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_v3_verify_match_post(self) -> None:
-        """Test case for v3_verify_match_post
-
-        """
-        pass
-
     def test_verify_post(self) -> None:
         """Test case for verify_post
 
