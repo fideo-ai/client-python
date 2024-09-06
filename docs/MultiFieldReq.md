@@ -29,10 +29,6 @@ Name | Type | Description | Notes
 **phone** | **str** |  | [optional] 
 **profile** | [**SocialProfileReq**](SocialProfileReq.md) |  | [optional] 
 **maid** | **str** |  | [optional] 
-**infer** | **bool** |  | [optional] 
-**confidence** | **str** |  | [optional] 
-**birthday** | **str** |  | [optional] 
-**ip_address** | **str** |  | [optional] 
 
 ## Example
 

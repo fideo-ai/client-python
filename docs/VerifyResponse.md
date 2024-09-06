@@ -1,4 +1,4 @@
-# MatchResponse
+# VerifyResponse
 
 
 ## Properties
@@ -35,19 +35,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from fideo_api.models.match_response import MatchResponse
+from fideo_api.models.verify_response import VerifyResponse
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of MatchResponse from a JSON string
-match_response_instance = MatchResponse.from_json(json)
+# create an instance of VerifyResponse from a JSON string
+verify_response_instance = VerifyResponse.from_json(json)
 # print the JSON string representation of the object
-print(MatchResponse.to_json())
+print(VerifyResponse.to_json())
 
 # convert the object into a dict
-match_response_dict = match_response_instance.to_dict()
-# create an instance of MatchResponse from a dict
-match_response_from_dict = MatchResponse.from_dict(match_response_dict)
+verify_response_dict = verify_response_instance.to_dict()
+# create an instance of VerifyResponse from a dict
+verify_response_from_dict = VerifyResponse.from_dict(verify_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

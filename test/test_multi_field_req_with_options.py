@@ -15,10 +15,10 @@
 
 import unittest
 
-from fideo_api.models.photo import Photo
+from fideo_api.models.multi_field_req_with_options import MultiFieldReqWithOptions
 
-class TestPhoto(unittest.TestCase):
-    """Photo unit test stubs"""
+class TestMultiFieldReqWithOptions(unittest.TestCase):
+    """MultiFieldReqWithOptions unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,26 +26,34 @@ class TestPhoto(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Photo:
-        """Test Photo
+    def make_instance(self, include_optional) -> MultiFieldReqWithOptions:
+        """Test MultiFieldReqWithOptions
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Photo`
+        # uncomment below to create an instance of `MultiFieldReqWithOptions`
         """
-        model = Photo()
+        model = MultiFieldReqWithOptions()
         if include_optional:
-            return Photo(
-                url = '',
-                label = ''
+            return MultiFieldReqWithOptions(
+                infer = True,
+                confidence = 'LOW',
+                birthday = '',
+                ip_address = '',
+                countries = [
+                    ''
+                    ],
+                excluded_countries = [
+                    ''
+                    ]
             )
         else:
-            return Photo(
+            return MultiFieldReqWithOptions(
         )
         """
 
-    def testPhoto(self):
-        """Test Photo"""
+    def testMultiFieldReqWithOptions(self):
+        """Test MultiFieldReqWithOptions"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

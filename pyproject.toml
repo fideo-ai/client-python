@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fideo_api"
-version = "1.0.2"
+version = "1.0.4"
 description = "Fideo API"
 authors = ["OpenAPI Generator Community <support@fideo.ai>"]
 license = "Apache 2.0"

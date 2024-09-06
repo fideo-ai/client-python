@@ -1,4 +1,4 @@
-# VerifySignalsPost200Response
+# SignalsPost200Response
 
 
 ## Properties
@@ -22,19 +22,19 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from fideo_api.models.verify_signals_post200_response import VerifySignalsPost200Response
+from fideo_api.models.signals_post200_response import SignalsPost200Response
 
 # TODO update the JSON string below
 json = "{}"
-# create an instance of VerifySignalsPost200Response from a JSON string
-verify_signals_post200_response_instance = VerifySignalsPost200Response.from_json(json)
+# create an instance of SignalsPost200Response from a JSON string
+signals_post200_response_instance = SignalsPost200Response.from_json(json)
 # print the JSON string representation of the object
-print(VerifySignalsPost200Response.to_json())
+print(SignalsPost200Response.to_json())
 
 # convert the object into a dict
-verify_signals_post200_response_dict = verify_signals_post200_response_instance.to_dict()
-# create an instance of VerifySignalsPost200Response from a dict
-verify_signals_post200_response_from_dict = VerifySignalsPost200Response.from_dict(verify_signals_post200_response_dict)
+signals_post200_response_dict = signals_post200_response_instance.to_dict()
+# create an instance of SignalsPost200Response from a dict
+signals_post200_response_from_dict = SignalsPost200Response.from_dict(signals_post200_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
