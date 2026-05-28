@@ -23,9 +23,9 @@ from setuptools import setup, find_packages  # noqa: H301
 # http://pypi.python.org/pypi/setuptools
 NAME = "fideo-api"
 VERSION = "1.0.4"
-PYTHON_REQUIRES = ">=3.7"
+PYTHON_REQUIRES = ">=3.10"
 REQUIRES = [
-    "urllib3 >= 1.25.3, < 2.1.0",
+    "urllib3 >= 2.7.0, < 3.0.0",
     "python-dateutil",
     "pydantic >= 2",
     "typing-extensions >= 4.7.1",
@@ -39,6 +39,7 @@ setup(
     author_email="support@fideo.ai",
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Fideo API"],
+    python_requires=PYTHON_REQUIRES,
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
