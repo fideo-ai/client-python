@@ -18,21 +18,30 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IpAddress(BaseModel):
+class SignalPatternsRequest(BaseModel):
     """
-    IpAddress
+    SignalPatternsRequest
     """ # noqa: E501
-    first_seen_ms: Optional[StrictInt] = Field(default=None, alias="firstSeenMs")
-    last_seen_ms: Optional[StrictInt] = Field(default=None, alias="lastSeenMs")
-    observations: Optional[StrictInt] = None
-    confidence: Optional[Union[StrictFloat, StrictInt]] = None
-    id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["firstSeenMs", "lastSeenMs", "observations", "confidence", "id"]
+    email: StrictStr = Field(description="Email address to get signal patterns for")
+    interval: Optional[StrictStr] = Field(default=None, description="Time interval for timeseries data (used only for timeseries endpoint)")
+    count: Optional[Annotated[int, Field(strict=True, ge=1)]] = Field(default=None, description="Number of data points to return (used only for timeseries endpoint)")
+    __properties: ClassVar[List[str]] = ["email", "interval", "count"]
+
+    @field_validator('interval')
+    def interval_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['minute', 'hour', 'day', 'month']):
+            raise ValueError("must be one of enum values ('minute', 'hour', 'day', 'month')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +61,7 @@ class IpAddress(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IpAddress from a JSON string"""
+        """Create an instance of SignalPatternsRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,7 +86,7 @@ class IpAddress(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IpAddress from a dict"""
+        """Create an instance of SignalPatternsRequest from a dict"""
         if obj is None:
             return None
 
@@ -85,11 +94,9 @@ class IpAddress(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "firstSeenMs": obj.get("firstSeenMs"),
-            "lastSeenMs": obj.get("lastSeenMs"),
-            "observations": obj.get("observations"),
-            "confidence": obj.get("confidence"),
-            "id": obj.get("id")
+            "email": obj.get("email"),
+            "interval": obj.get("interval"),
+            "count": obj.get("count")
         })
         return _obj
 

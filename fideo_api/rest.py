@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Fideo API
+    Fideo Production API
 
     Fideo Intelligence offers an identity intelligence product that protects the public good. - [Fideo Privacy Policy](https://www.fideo.ai/privacy-policy/)
 
@@ -226,7 +226,7 @@ class RESTClientObject:
                         headers=headers,
                         preload_content=False
                     )
-                elif headers['Content-Type'] == 'text/plain' and isinstance(body, bool):
+                elif headers['Content-Type'].startswith('text/') and isinstance(body, bool):
                     request_body = "true" if body else "false"
                     r = self.pool_manager.request(
                         method,

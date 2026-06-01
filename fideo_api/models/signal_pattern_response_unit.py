@@ -18,21 +18,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from typing import Any, ClassVar, Dict, List, Optional
+from fideo_api.models.signal_pattern_response_unit_count import SignalPatternResponseUnitCount
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IpAddress(BaseModel):
+class SignalPatternResponseUnit(BaseModel):
     """
-    IpAddress
+    SignalPatternResponseUnit
     """ # noqa: E501
-    first_seen_ms: Optional[StrictInt] = Field(default=None, alias="firstSeenMs")
-    last_seen_ms: Optional[StrictInt] = Field(default=None, alias="lastSeenMs")
-    observations: Optional[StrictInt] = None
-    confidence: Optional[Union[StrictFloat, StrictInt]] = None
-    id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["firstSeenMs", "lastSeenMs", "observations", "confidence", "id"]
+    observations: Optional[StrictInt] = Field(default=None, description="Number of observations")
+    sources: Optional[StrictInt] = Field(default=None, description="Number of sources")
+    events: Optional[List[SignalPatternResponseUnitCount]] = None
+    __properties: ClassVar[List[str]] = ["observations", "sources", "events"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +51,7 @@ class IpAddress(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IpAddress from a JSON string"""
+        """Create an instance of SignalPatternResponseUnit from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,11 +72,18 @@ class IpAddress(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in events (list)
+        _items = []
+        if self.events:
+            for _item_events in self.events:
+                if _item_events:
+                    _items.append(_item_events.to_dict())
+            _dict['events'] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IpAddress from a dict"""
+        """Create an instance of SignalPatternResponseUnit from a dict"""
         if obj is None:
             return None
 
@@ -85,11 +91,9 @@ class IpAddress(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "firstSeenMs": obj.get("firstSeenMs"),
-            "lastSeenMs": obj.get("lastSeenMs"),
             "observations": obj.get("observations"),
-            "confidence": obj.get("confidence"),
-            "id": obj.get("id")
+            "sources": obj.get("sources"),
+            "events": [SignalPatternResponseUnitCount.from_dict(_item) for _item in obj["events"]] if obj.get("events") is not None else None
         })
         return _obj
 
