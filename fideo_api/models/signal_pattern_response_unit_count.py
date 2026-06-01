@@ -18,21 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IpAddress(BaseModel):
+class SignalPatternResponseUnitCount(BaseModel):
     """
-    IpAddress
+    SignalPatternResponseUnitCount
     """ # noqa: E501
-    first_seen_ms: Optional[StrictInt] = Field(default=None, alias="firstSeenMs")
-    last_seen_ms: Optional[StrictInt] = Field(default=None, alias="lastSeenMs")
-    observations: Optional[StrictInt] = None
-    confidence: Optional[Union[StrictFloat, StrictInt]] = None
-    id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["firstSeenMs", "lastSeenMs", "observations", "confidence", "id"]
+    type: Optional[StrictStr] = Field(default=None, description="Type of event")
+    observations: Optional[StrictInt] = Field(default=None, description="Number of observations")
+    sources: Optional[StrictInt] = Field(default=None, description="Number of sources")
+    __properties: ClassVar[List[str]] = ["type", "observations", "sources"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +50,7 @@ class IpAddress(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IpAddress from a JSON string"""
+        """Create an instance of SignalPatternResponseUnitCount from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,7 +75,7 @@ class IpAddress(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IpAddress from a dict"""
+        """Create an instance of SignalPatternResponseUnitCount from a dict"""
         if obj is None:
             return None
 
@@ -85,11 +83,9 @@ class IpAddress(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "firstSeenMs": obj.get("firstSeenMs"),
-            "lastSeenMs": obj.get("lastSeenMs"),
+            "type": obj.get("type"),
             "observations": obj.get("observations"),
-            "confidence": obj.get("confidence"),
-            "id": obj.get("id")
+            "sources": obj.get("sources")
         })
         return _obj
 

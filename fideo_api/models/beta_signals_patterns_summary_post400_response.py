@@ -18,21 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from pydantic import BaseModel, ConfigDict, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class IpAddress(BaseModel):
+class BetaSignalsPatternsSummaryPost400Response(BaseModel):
     """
-    IpAddress
+    BetaSignalsPatternsSummaryPost400Response
     """ # noqa: E501
-    first_seen_ms: Optional[StrictInt] = Field(default=None, alias="firstSeenMs")
-    last_seen_ms: Optional[StrictInt] = Field(default=None, alias="lastSeenMs")
-    observations: Optional[StrictInt] = None
-    confidence: Optional[Union[StrictFloat, StrictInt]] = None
-    id: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["firstSeenMs", "lastSeenMs", "observations", "confidence", "id"]
+    error: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["error"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -52,7 +48,7 @@ class IpAddress(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of IpAddress from a JSON string"""
+        """Create an instance of BetaSignalsPatternsSummaryPost400Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,7 +73,7 @@ class IpAddress(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of IpAddress from a dict"""
+        """Create an instance of BetaSignalsPatternsSummaryPost400Response from a dict"""
         if obj is None:
             return None
 
@@ -85,11 +81,7 @@ class IpAddress(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "firstSeenMs": obj.get("firstSeenMs"),
-            "lastSeenMs": obj.get("lastSeenMs"),
-            "observations": obj.get("observations"),
-            "confidence": obj.get("confidence"),
-            "id": obj.get("id")
+            "error": obj.get("error")
         })
         return _obj
 

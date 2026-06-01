@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Fideo API
+    Fideo Production API
 
     Fideo Intelligence offers an identity intelligence product that protects the public good. - [Fideo Privacy Policy](https://www.fideo.ai/privacy-policy/)
 
@@ -37,7 +37,7 @@ class MultiFieldReqWithOptions(MultiFieldReq):
     ip_address: Optional[StrictStr] = Field(default=None, alias="ipAddress")
     countries: Optional[List[StrictStr]] = None
     excluded_countries: Optional[List[StrictStr]] = Field(default=None, alias="excludedCountries")
-    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "placekey", "generatePid", "email", "phone", "profile", "maid", "infer", "confidence", "birthday", "ipAddress", "countries", "excludedCountries"]
+    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "generatePid", "email", "phone", "profile", "maid", "infer", "confidence", "birthday", "ipAddress", "countries", "excludedCountries"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -134,7 +134,6 @@ class MultiFieldReqWithOptions(MultiFieldReq):
             "partnerKeys": obj.get("partnerKeys"),
             "li_nonid": obj.get("li_nonid"),
             "panoramaId": obj.get("panoramaId"),
-            "placekey": obj.get("placekey"),
             "generatePid": obj.get("generatePid"),
             "email": obj.get("email"),
             "phone": obj.get("phone"),

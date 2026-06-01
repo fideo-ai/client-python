@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Fideo API
+    Fideo Production API
 
     Fideo Intelligence offers an identity intelligence product that protects the public good. - [Fideo Privacy Policy](https://www.fideo.ai/privacy-policy/)
 
@@ -23,10 +23,10 @@ from setuptools import setup, find_packages  # noqa: H301
 # http://pypi.python.org/pypi/setuptools
 NAME = "fideo-api"
 VERSION = "1.0.4"
-PYTHON_REQUIRES = ">=3.7"
+PYTHON_REQUIRES = ">= 3.8"
 REQUIRES = [
-    "urllib3 >= 1.25.3, < 2.1.0",
-    "python-dateutil",
+    "urllib3 >= 1.25.3, < 3.0.0",
+    "python-dateutil >= 2.8.2",
     "pydantic >= 2",
     "typing-extensions >= 4.7.1",
 ]
@@ -34,11 +34,11 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Fideo API",
+    description="Fideo Production API",
     author="OpenAPI Generator community",
     author_email="support@fideo.ai",
     url="",
-    keywords=["OpenAPI", "OpenAPI-Generator", "Fideo API"],
+    keywords=["OpenAPI", "OpenAPI-Generator", "Fideo Production API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,

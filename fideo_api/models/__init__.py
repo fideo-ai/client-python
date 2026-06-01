@@ -2,7 +2,7 @@
 
 # flake8: noqa
 """
-    Fideo API
+    Fideo Production API
 
     Fideo Intelligence offers an identity intelligence product that protects the public good. - [Fideo Privacy Policy](https://www.fideo.ai/privacy-policy/)
 
@@ -16,6 +16,7 @@
 
 # import models into model package
 from fideo_api.models.alias import Alias
+from fideo_api.models.beta_signals_patterns_summary_post400_response import BetaSignalsPatternsSummaryPost400Response
 from fideo_api.models.demographics import Demographics
 from fideo_api.models.economic import Economic
 from fideo_api.models.education import Education
@@ -37,6 +38,10 @@ from fideo_api.models.person_name_req import PersonNameReq
 from fideo_api.models.phone import Phone
 from fideo_api.models.photo import Photo
 from fideo_api.models.score_details import ScoreDetails
+from fideo_api.models.signal_pattern_recency_response import SignalPatternRecencyResponse
+from fideo_api.models.signal_pattern_response_unit import SignalPatternResponseUnit
+from fideo_api.models.signal_pattern_response_unit_count import SignalPatternResponseUnitCount
+from fideo_api.models.signal_patterns_request import SignalPatternsRequest
 from fideo_api.models.signals_post200_response import SignalsPost200Response
 from fideo_api.models.signals_response_v0 import SignalsResponseV0
 from fideo_api.models.signals_response_v20240424 import SignalsResponseV20240424
