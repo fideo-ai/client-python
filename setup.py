@@ -23,7 +23,7 @@ from setuptools import setup, find_packages  # noqa: H301
 # http://pypi.python.org/pypi/setuptools
 NAME = "fideo-api"
 VERSION = "1.0.4"
-PYTHON_REQUIRES = ">=3.7"
+PYTHON_REQUIRES = ">=3.10"
 REQUIRES = [
     "urllib3 >= 1.25.3, < 2.1.0",
     "python-dateutil",
@@ -40,6 +40,7 @@ setup(
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Fideo API"],
     install_requires=REQUIRES,
+    python_requires=PYTHON_REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     license="Apache 2.0",
