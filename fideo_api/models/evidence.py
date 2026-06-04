@@ -18,11 +18,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from fideo_api.models.ip_country import IPCountry
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class Evidence(BaseModel):
     """
@@ -30,11 +31,11 @@ class Evidence(BaseModel):
     """ # noqa: E501
     ip_tor: Optional[StrictBool] = Field(default=None, alias="ipTor")
     ip_country: Optional[IPCountry] = Field(default=None, alias="ipCountry")
-    country_of_ip: Optional[StrictStr] = Field(default=None, alias="countryOfIp")
-    __properties: ClassVar[List[str]] = ["ipTor", "ipCountry", "countryOfIp"]
+    __properties: ClassVar[List[str]] = ["ipTor", "ipCountry"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,8 +47,7 @@ class Evidence(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -85,8 +85,7 @@ class Evidence(BaseModel):
 
         _obj = cls.model_validate({
             "ipTor": obj.get("ipTor"),
-            "ipCountry": obj.get("ipCountry"),
-            "countryOfIp": obj.get("countryOfIp")
+            "ipCountry": obj.get("ipCountry")
         })
         return _obj
 

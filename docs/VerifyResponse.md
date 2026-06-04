@@ -5,6 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**risk** | **float** |  | [optional] 
+**checks** | [**List[CheckResult]**](CheckResult.md) |  | [optional] 
+**session_id** | **UUID** |  | [optional] 
 **address_line1** | **str** |  | [optional] 
 **address_line2** | **str** |  | [optional] 
 **city** | **str** |  | [optional] 
@@ -18,19 +21,12 @@ Name | Type | Description | Notes
 **full_name** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
 **email** | **str** |  | [optional] 
-**maid** | **str** |  | [optional] 
 **social** | **str** |  | [optional] 
-**non_id** | **str** |  | [optional] 
-**panorama_id** | **str** |  | [optional] 
 **ip_address** | **str** |  | [optional] 
 **birthday** | **str** |  | [optional] 
 **title** | **str** |  | [optional] 
 **organization** | **str** |  | [optional] 
-**risk** | **float** |  | [optional] 
 **evidence** | [**Evidence**](Evidence.md) |  | [optional] 
-**risk_v2** | **float** |  | [optional] 
-**risk_v3** | **float** |  | [optional] 
-**score_details** | [**List[ScoreDetails]**](ScoreDetails.md) |  | [optional] 
 
 ## Example
 

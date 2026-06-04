@@ -20,8 +20,10 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from fideo_api.models.signal_pattern_response_unit import SignalPatternResponseUnit
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class Email(BaseModel):
     """
@@ -37,10 +39,17 @@ class Email(BaseModel):
     sha256: Optional[StrictStr] = None
     label: Optional[StrictStr] = None
     activity: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["firstSeenMs", "lastSeenMs", "observations", "confidence", "value", "md5", "sha1", "sha256", "label", "activity"]
+    hour: Optional[SignalPatternResponseUnit] = None
+    day: Optional[SignalPatternResponseUnit] = None
+    week: Optional[SignalPatternResponseUnit] = None
+    month: Optional[SignalPatternResponseUnit] = None
+    six_month: Optional[SignalPatternResponseUnit] = Field(default=None, alias="sixMonth")
+    year: Optional[SignalPatternResponseUnit] = None
+    __properties: ClassVar[List[str]] = ["firstSeenMs", "lastSeenMs", "observations", "confidence", "value", "md5", "sha1", "sha256", "label", "activity", "hour", "day", "week", "month", "sixMonth", "year"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,8 +61,7 @@ class Email(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -78,6 +86,24 @@ class Email(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of hour
+        if self.hour:
+            _dict['hour'] = self.hour.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of day
+        if self.day:
+            _dict['day'] = self.day.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of week
+        if self.week:
+            _dict['week'] = self.week.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of month
+        if self.month:
+            _dict['month'] = self.month.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of six_month
+        if self.six_month:
+            _dict['sixMonth'] = self.six_month.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of year
+        if self.year:
+            _dict['year'] = self.year.to_dict()
         return _dict
 
     @classmethod
@@ -99,7 +125,13 @@ class Email(BaseModel):
             "sha1": obj.get("sha1"),
             "sha256": obj.get("sha256"),
             "label": obj.get("label"),
-            "activity": obj.get("activity")
+            "activity": obj.get("activity"),
+            "hour": SignalPatternResponseUnit.from_dict(obj["hour"]) if obj.get("hour") is not None else None,
+            "day": SignalPatternResponseUnit.from_dict(obj["day"]) if obj.get("day") is not None else None,
+            "week": SignalPatternResponseUnit.from_dict(obj["week"]) if obj.get("week") is not None else None,
+            "month": SignalPatternResponseUnit.from_dict(obj["month"]) if obj.get("month") is not None else None,
+            "sixMonth": SignalPatternResponseUnit.from_dict(obj["sixMonth"]) if obj.get("sixMonth") is not None else None,
+            "year": SignalPatternResponseUnit.from_dict(obj["year"]) if obj.get("year") is not None else None
         })
         return _obj
 

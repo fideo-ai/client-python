@@ -8,9 +8,7 @@ Method | HTTP request | Description
 
 
 # **verify_post**
-> VerifyResponse verify_post(multi_field_req=multi_field_req)
-
-
+> VerifyResponse verify_post(v=v, multi_field_req_with_options=multi_field_req_with_options)
 
 ### Example
 
@@ -18,7 +16,7 @@ Method | HTTP request | Description
 
 ```python
 import fideo_api
-from fideo_api.models.multi_field_req import MultiFieldReq
+from fideo_api.models.multi_field_req_with_options import MultiFieldReqWithOptions
 from fideo_api.models.verify_response import VerifyResponse
 from fideo_api.rest import ApiException
 from pprint import pprint
@@ -40,13 +38,14 @@ configuration = fideo_api.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with fideo_api.ApiClient(configuration) as api_client:
+async with fideo_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fideo_api.VerifyApi(api_client)
-    multi_field_req = fideo_api.MultiFieldReq() # MultiFieldReq |  (optional)
+    v = 'v_example' # str |  (optional)
+    multi_field_req_with_options = fideo_api.MultiFieldReqWithOptions() # MultiFieldReqWithOptions |  (optional)
 
     try:
-        api_response = api_instance.verify_post(multi_field_req=multi_field_req)
+        api_response = await api_instance.verify_post(v=v, multi_field_req_with_options=multi_field_req_with_options)
         print("The response of VerifyApi->verify_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -60,7 +59,8 @@ with fideo_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **multi_field_req** | [**MultiFieldReq**](MultiFieldReq.md)|  | [optional] 
+ **v** | **str**|  | [optional] 
+ **multi_field_req_with_options** | [**MultiFieldReqWithOptions**](MultiFieldReqWithOptions.md)|  | [optional] 
 
 ### Return type
 
@@ -80,6 +80,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**201** | Created new verify session |  -  |
+**400** | Bad request |  -  |
+**410** | Claimed or deleted data |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

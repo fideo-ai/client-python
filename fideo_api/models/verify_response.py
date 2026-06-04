@@ -20,15 +20,20 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional, Union
+from uuid import UUID
+from fideo_api.models.check_result import CheckResult
 from fideo_api.models.evidence import Evidence
-from fideo_api.models.score_details import ScoreDetails
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class VerifyResponse(BaseModel):
     """
     VerifyResponse
     """ # noqa: E501
+    risk: Optional[Union[StrictFloat, StrictInt]] = None
+    checks: Optional[List[CheckResult]] = None
+    session_id: Optional[UUID] = Field(default=None, alias="sessionId")
     address_line1: Optional[StrictStr] = Field(default=None, alias="addressLine1")
     address_line2: Optional[StrictStr] = Field(default=None, alias="addressLine2")
     city: Optional[StrictStr] = None
@@ -42,23 +47,17 @@ class VerifyResponse(BaseModel):
     full_name: Optional[StrictStr] = Field(default=None, alias="fullName")
     phone: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
-    maid: Optional[StrictStr] = None
     social: Optional[StrictStr] = None
-    non_id: Optional[StrictStr] = Field(default=None, alias="nonId")
-    panorama_id: Optional[StrictStr] = Field(default=None, alias="panoramaId")
     ip_address: Optional[StrictStr] = Field(default=None, alias="ipAddress")
     birthday: Optional[StrictStr] = None
     title: Optional[StrictStr] = None
     organization: Optional[StrictStr] = None
-    risk: Optional[Union[StrictFloat, StrictInt]] = None
     evidence: Optional[Evidence] = None
-    risk_v2: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="riskV2")
-    risk_v3: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="riskV3")
-    score_details: Optional[List[ScoreDetails]] = Field(default=None, alias="scoreDetails")
-    __properties: ClassVar[List[str]] = ["addressLine1", "addressLine2", "city", "region", "regionCode", "country", "continent", "postalCode", "familyName", "givenName", "fullName", "phone", "email", "maid", "social", "nonId", "panoramaId", "ipAddress", "birthday", "title", "organization", "risk", "evidence", "riskV2", "riskV3", "scoreDetails"]
+    __properties: ClassVar[List[str]] = ["risk", "checks", "sessionId", "addressLine1", "addressLine2", "city", "region", "regionCode", "country", "continent", "postalCode", "familyName", "givenName", "fullName", "phone", "email", "social", "ipAddress", "birthday", "title", "organization", "evidence"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -70,8 +69,7 @@ class VerifyResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -96,16 +94,16 @@ class VerifyResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in checks (list)
+        _items = []
+        if self.checks:
+            for _item_checks in self.checks:
+                if _item_checks:
+                    _items.append(_item_checks.to_dict())
+            _dict['checks'] = _items
         # override the default output from pydantic by calling `to_dict()` of evidence
         if self.evidence:
             _dict['evidence'] = self.evidence.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of each item in score_details (list)
-        _items = []
-        if self.score_details:
-            for _item_score_details in self.score_details:
-                if _item_score_details:
-                    _items.append(_item_score_details.to_dict())
-            _dict['scoreDetails'] = _items
         return _dict
 
     @classmethod
@@ -118,6 +116,9 @@ class VerifyResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "risk": obj.get("risk"),
+            "checks": [CheckResult.from_dict(_item) for _item in obj["checks"]] if obj.get("checks") is not None else None,
+            "sessionId": obj.get("sessionId"),
             "addressLine1": obj.get("addressLine1"),
             "addressLine2": obj.get("addressLine2"),
             "city": obj.get("city"),
@@ -131,19 +132,12 @@ class VerifyResponse(BaseModel):
             "fullName": obj.get("fullName"),
             "phone": obj.get("phone"),
             "email": obj.get("email"),
-            "maid": obj.get("maid"),
             "social": obj.get("social"),
-            "nonId": obj.get("nonId"),
-            "panoramaId": obj.get("panoramaId"),
             "ipAddress": obj.get("ipAddress"),
             "birthday": obj.get("birthday"),
             "title": obj.get("title"),
             "organization": obj.get("organization"),
-            "risk": obj.get("risk"),
-            "evidence": Evidence.from_dict(obj["evidence"]) if obj.get("evidence") is not None else None,
-            "riskV2": obj.get("riskV2"),
-            "riskV3": obj.get("riskV3"),
-            "scoreDetails": [ScoreDetails.from_dict(_item) for _item in obj["scoreDetails"]] if obj.get("scoreDetails") is not None else None
+            "evidence": Evidence.from_dict(obj["evidence"]) if obj.get("evidence") is not None else None
         })
         return _obj
 

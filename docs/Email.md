@@ -15,6 +15,12 @@ Name | Type | Description | Notes
 **sha256** | **str** |  | [optional] 
 **label** | **str** |  | [optional] 
 **activity** | **float** |  | [optional] 
+**hour** | [**SignalPatternResponseUnit**](SignalPatternResponseUnit.md) |  | [optional] 
+**day** | [**SignalPatternResponseUnit**](SignalPatternResponseUnit.md) |  | [optional] 
+**week** | [**SignalPatternResponseUnit**](SignalPatternResponseUnit.md) |  | [optional] 
+**month** | [**SignalPatternResponseUnit**](SignalPatternResponseUnit.md) |  | [optional] 
+**six_month** | [**SignalPatternResponseUnit**](SignalPatternResponseUnit.md) |  | [optional] 
+**year** | [**SignalPatternResponseUnit**](SignalPatternResponseUnit.md) |  | [optional] 
 
 ## Example
 

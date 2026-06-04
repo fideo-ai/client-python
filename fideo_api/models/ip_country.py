@@ -27,9 +27,9 @@ class IPCountry(str, Enum):
     """
     allowed enum values
     """
-    DOMESTIC = 'DOMESTIC'
-    FOREIGN = 'FOREIGN'
-    UNKNOWN = 'UNKNOWN'
+    DOMESTIC = 'domestic'
+    FOREIGN = 'foreign'
+    UNKNOWN = 'unknown'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

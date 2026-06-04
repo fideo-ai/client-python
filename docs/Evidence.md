@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ip_tor** | **bool** |  | [optional] 
 **ip_country** | [**IPCountry**](IPCountry.md) |  | [optional] 
-**country_of_ip** | **str** |  | [optional] 
 
 ## Example
 

@@ -18,14 +18,16 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import ConfigDict, Field, StrictBool, StrictStr
+from pydantic import ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from uuid import UUID
 from fideo_api.models.location_req import LocationReq
 from fideo_api.models.multi_field_req import MultiFieldReq
 from fideo_api.models.person_name_req import PersonNameReq
 from fideo_api.models.social_profile_req import SocialProfileReq
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class MultiFieldReqWithOptions(MultiFieldReq):
     """
@@ -35,12 +37,25 @@ class MultiFieldReqWithOptions(MultiFieldReq):
     confidence: Optional[StrictStr] = 'LOW'
     birthday: Optional[StrictStr] = None
     ip_address: Optional[StrictStr] = Field(default=None, alias="ipAddress")
+    session_id: Optional[UUID] = Field(default=None, description="Optional UUIDv7 session identifier. A recent valid value reuses an existing verify session and returns 200; omitted, blank, or old values create a new session and return 201.", alias="sessionId")
+    pattern_interval: Optional[StrictStr] = Field(default=None, description="Optional signal-pattern interval to decorate signal email responses", alias="patternInterval")
     countries: Optional[List[StrictStr]] = None
     excluded_countries: Optional[List[StrictStr]] = Field(default=None, alias="excludedCountries")
-    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "placekey", "generatePid", "email", "phone", "profile", "maid", "infer", "confidence", "birthday", "ipAddress", "countries", "excludedCountries"]
+    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "generatePid", "email", "phone", "profile", "maid", "infer", "confidence", "birthday", "ipAddress", "sessionId", "patternInterval", "countries", "excludedCountries"]
+
+    @field_validator('pattern_interval')
+    def pattern_interval_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['hour', 'day', 'week', 'month', '6months', 'year']):
+            raise ValueError("must be one of enum values ('hour', 'day', 'week', 'month', '6months', 'year')")
+        return value
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,8 +67,7 @@ class MultiFieldReqWithOptions(MultiFieldReq):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -134,7 +148,6 @@ class MultiFieldReqWithOptions(MultiFieldReq):
             "partnerKeys": obj.get("partnerKeys"),
             "li_nonid": obj.get("li_nonid"),
             "panoramaId": obj.get("panoramaId"),
-            "placekey": obj.get("placekey"),
             "generatePid": obj.get("generatePid"),
             "email": obj.get("email"),
             "phone": obj.get("phone"),
@@ -144,6 +157,8 @@ class MultiFieldReqWithOptions(MultiFieldReq):
             "confidence": obj.get("confidence") if obj.get("confidence") is not None else 'LOW',
             "birthday": obj.get("birthday"),
             "ipAddress": obj.get("ipAddress"),
+            "sessionId": obj.get("sessionId"),
+            "patternInterval": obj.get("patternInterval"),
             "countries": obj.get("countries"),
             "excludedCountries": obj.get("excludedCountries")
         })
