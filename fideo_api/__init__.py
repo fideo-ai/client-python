@@ -15,50 +15,111 @@
 """  # noqa: E501
 
 
-__version__ = ""
+__version__ = "1.0.4"
+
+# Define package exports
+__all__ = [
+    "BetaApi",
+    "SignalsApi",
+    "VerifyApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "Alias",
+    "CheckResult",
+    "Demographics",
+    "Economic",
+    "Education",
+    "EducationDate",
+    "Email",
+    "Employment",
+    "EmploymentDate",
+    "Evidence",
+    "IPCountry",
+    "IpAddress",
+    "Location",
+    "LocationReq",
+    "LocationType",
+    "MultiFieldReq",
+    "MultiFieldReqWithOptions",
+    "Name",
+    "NameWithAlias",
+    "PersonNameReq",
+    "Phone",
+    "Photo",
+    "ScoreDetails",
+    "SignalPatternRecencyResponse",
+    "SignalPatternResponseUnit",
+    "SignalPatternResponseUnitCount",
+    "SignalPatternsRequest",
+    "SignalPatternsTimeseriesRequest",
+    "SignalsPost200Response",
+    "SignalsResponseV0",
+    "SignalsResponseV20240424",
+    "SocialProfileDetails",
+    "SocialProfileReq",
+    "SocialProfileUrls",
+    "StatusResponseWithMessage",
+    "VerifyResponse",
+]
 
 # import apis into sdk package
-from fideo_api.api.signals_api import SignalsApi
-from fideo_api.api.verify_api import VerifyApi
+from fideo_api.api.beta_api import BetaApi as BetaApi
+from fideo_api.api.signals_api import SignalsApi as SignalsApi
+from fideo_api.api.verify_api import VerifyApi as VerifyApi
 
 # import ApiClient
-from fideo_api.api_response import ApiResponse
-from fideo_api.api_client import ApiClient
-from fideo_api.configuration import Configuration
-from fideo_api.exceptions import OpenApiException
-from fideo_api.exceptions import ApiTypeError
-from fideo_api.exceptions import ApiValueError
-from fideo_api.exceptions import ApiKeyError
-from fideo_api.exceptions import ApiAttributeError
-from fideo_api.exceptions import ApiException
+from fideo_api.api_response import ApiResponse as ApiResponse
+from fideo_api.api_client import ApiClient as ApiClient
+from fideo_api.configuration import Configuration as Configuration
+from fideo_api.exceptions import OpenApiException as OpenApiException
+from fideo_api.exceptions import ApiTypeError as ApiTypeError
+from fideo_api.exceptions import ApiValueError as ApiValueError
+from fideo_api.exceptions import ApiKeyError as ApiKeyError
+from fideo_api.exceptions import ApiAttributeError as ApiAttributeError
+from fideo_api.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from fideo_api.models.alias import Alias
-from fideo_api.models.demographics import Demographics
-from fideo_api.models.economic import Economic
-from fideo_api.models.education import Education
-from fideo_api.models.education_date import EducationDate
-from fideo_api.models.email import Email
-from fideo_api.models.employment import Employment
-from fideo_api.models.employment_date import EmploymentDate
-from fideo_api.models.evidence import Evidence
-from fideo_api.models.ip_country import IPCountry
-from fideo_api.models.ip_address import IpAddress
-from fideo_api.models.location import Location
-from fideo_api.models.location_req import LocationReq
-from fideo_api.models.location_type import LocationType
-from fideo_api.models.multi_field_req import MultiFieldReq
-from fideo_api.models.multi_field_req_with_options import MultiFieldReqWithOptions
-from fideo_api.models.name import Name
-from fideo_api.models.name_with_alias import NameWithAlias
-from fideo_api.models.person_name_req import PersonNameReq
-from fideo_api.models.phone import Phone
-from fideo_api.models.photo import Photo
-from fideo_api.models.score_details import ScoreDetails
-from fideo_api.models.signals_post200_response import SignalsPost200Response
-from fideo_api.models.signals_response_v0 import SignalsResponseV0
-from fideo_api.models.signals_response_v20240424 import SignalsResponseV20240424
-from fideo_api.models.social_profile_details import SocialProfileDetails
-from fideo_api.models.social_profile_req import SocialProfileReq
-from fideo_api.models.social_profile_urls import SocialProfileUrls
-from fideo_api.models.verify_response import VerifyResponse
+from fideo_api.models.alias import Alias as Alias
+from fideo_api.models.check_result import CheckResult as CheckResult
+from fideo_api.models.demographics import Demographics as Demographics
+from fideo_api.models.economic import Economic as Economic
+from fideo_api.models.education import Education as Education
+from fideo_api.models.education_date import EducationDate as EducationDate
+from fideo_api.models.email import Email as Email
+from fideo_api.models.employment import Employment as Employment
+from fideo_api.models.employment_date import EmploymentDate as EmploymentDate
+from fideo_api.models.evidence import Evidence as Evidence
+from fideo_api.models.ip_country import IPCountry as IPCountry
+from fideo_api.models.ip_address import IpAddress as IpAddress
+from fideo_api.models.location import Location as Location
+from fideo_api.models.location_req import LocationReq as LocationReq
+from fideo_api.models.location_type import LocationType as LocationType
+from fideo_api.models.multi_field_req import MultiFieldReq as MultiFieldReq
+from fideo_api.models.multi_field_req_with_options import MultiFieldReqWithOptions as MultiFieldReqWithOptions
+from fideo_api.models.name import Name as Name
+from fideo_api.models.name_with_alias import NameWithAlias as NameWithAlias
+from fideo_api.models.person_name_req import PersonNameReq as PersonNameReq
+from fideo_api.models.phone import Phone as Phone
+from fideo_api.models.photo import Photo as Photo
+from fideo_api.models.score_details import ScoreDetails as ScoreDetails
+from fideo_api.models.signal_pattern_recency_response import SignalPatternRecencyResponse as SignalPatternRecencyResponse
+from fideo_api.models.signal_pattern_response_unit import SignalPatternResponseUnit as SignalPatternResponseUnit
+from fideo_api.models.signal_pattern_response_unit_count import SignalPatternResponseUnitCount as SignalPatternResponseUnitCount
+from fideo_api.models.signal_patterns_request import SignalPatternsRequest as SignalPatternsRequest
+from fideo_api.models.signal_patterns_timeseries_request import SignalPatternsTimeseriesRequest as SignalPatternsTimeseriesRequest
+from fideo_api.models.signals_post200_response import SignalsPost200Response as SignalsPost200Response
+from fideo_api.models.signals_response_v0 import SignalsResponseV0 as SignalsResponseV0
+from fideo_api.models.signals_response_v20240424 import SignalsResponseV20240424 as SignalsResponseV20240424
+from fideo_api.models.social_profile_details import SocialProfileDetails as SocialProfileDetails
+from fideo_api.models.social_profile_req import SocialProfileReq as SocialProfileReq
+from fideo_api.models.social_profile_urls import SocialProfileUrls as SocialProfileUrls
+from fideo_api.models.status_response_with_message import StatusResponseWithMessage as StatusResponseWithMessage
+from fideo_api.models.verify_response import VerifyResponse as VerifyResponse
+

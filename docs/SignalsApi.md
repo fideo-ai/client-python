@@ -10,8 +10,6 @@ Method | HTTP request | Description
 # **signals_post**
 > SignalsPost200Response signals_post(v=v, multi_field_req_with_options=multi_field_req_with_options)
 
-
-
 ### Example
 
 * Bearer Authentication (bearerAuth):
@@ -40,14 +38,14 @@ configuration = fideo_api.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with fideo_api.ApiClient(configuration) as api_client:
+async with fideo_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = fideo_api.SignalsApi(api_client)
     v = 'v_example' # str |  (optional)
     multi_field_req_with_options = fideo_api.MultiFieldReqWithOptions() # MultiFieldReqWithOptions |  (optional)
 
     try:
-        api_response = api_instance.signals_post(v=v, multi_field_req_with_options=multi_field_req_with_options)
+        api_response = await api_instance.signals_post(v=v, multi_field_req_with_options=multi_field_req_with_options)
         print("The response of SignalsApi->signals_post:\n")
         pprint(api_response)
     except Exception as e:
@@ -82,6 +80,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful response |  -  |
+**204** | No data found |  -  |
+**400** | Bad request |  -  |
+**403** | Forbidden |  -  |
+**410** | Claimed or deleted data |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

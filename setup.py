@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Fideo API
 
@@ -23,11 +21,11 @@ from setuptools import setup, find_packages  # noqa: H301
 # http://pypi.python.org/pypi/setuptools
 NAME = "fideo-api"
 VERSION = "1.0.4"
-PYTHON_REQUIRES = ">=3.10"
+PYTHON_REQUIRES = ">= 3.10"
 REQUIRES = [
-    "urllib3 >= 1.25.3, < 2.1.0",
-    "python-dateutil",
-    "pydantic >= 2",
+    "python-dateutil >= 2.8.2",
+    "httpx >= 0.28.1",
+    "pydantic >= 2.11",
     "typing-extensions >= 4.7.1",
 ]
 
@@ -40,7 +38,6 @@ setup(
     url="",
     keywords=["OpenAPI", "OpenAPI-Generator", "Fideo API"],
     install_requires=REQUIRES,
-    python_requires=PYTHON_REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
     license="Apache 2.0",

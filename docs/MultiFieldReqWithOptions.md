@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **confidence** | **str** |  | [optional] [default to 'LOW']
 **birthday** | **str** |  | [optional] 
 **ip_address** | **str** |  | [optional] 
+**session_id** | **UUID** | Optional UUIDv7 session identifier. A recent valid value reuses an existing verify session and returns 200; omitted, blank, or old values create a new session and return 201. | [optional] 
+**pattern_interval** | **str** | Optional signal-pattern interval to decorate signal email responses | [optional] 
 **countries** | **List[str]** |  | [optional] 
 **excluded_countries** | **List[str]** |  | [optional] 
 

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Fideo API
 
@@ -12,13 +10,15 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from pydantic import StrictStr
 from typing import Optional
-from fideo_api.models.multi_field_req import MultiFieldReq
+from fideo_api.models.multi_field_req_with_options import MultiFieldReqWithOptions
 from fideo_api.models.verify_response import VerifyResponse
 
 from fideo_api.api_client import ApiClient, RequestSerialized
@@ -40,9 +40,10 @@ class VerifyApi:
 
 
     @validate_call
-    def verify_post(
+    async def verify_post(
         self,
-        multi_field_req: Optional[MultiFieldReq] = None,
+        v: Optional[StrictStr] = None,
+        multi_field_req_with_options: Optional[MultiFieldReqWithOptions] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -59,8 +60,10 @@ class VerifyApi:
         """verify_post
 
 
-        :param multi_field_req:
-        :type multi_field_req: MultiFieldReq
+        :param v:
+        :type v: str
+        :param multi_field_req_with_options:
+        :type multi_field_req_with_options: MultiFieldReqWithOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -84,7 +87,8 @@ class VerifyApi:
         """ # noqa: E501
 
         _param = self._verify_post_serialize(
-            multi_field_req=multi_field_req,
+            v=v,
+            multi_field_req_with_options=multi_field_req_with_options,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -93,12 +97,15 @@ class VerifyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "VerifyResponse",
+            '201': "VerifyResponse",
+            '400': "StatusResponseWithMessage",
+            '410': "StatusResponseWithMessage",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -106,9 +113,10 @@ class VerifyApi:
 
 
     @validate_call
-    def verify_post_with_http_info(
+    async def verify_post_with_http_info(
         self,
-        multi_field_req: Optional[MultiFieldReq] = None,
+        v: Optional[StrictStr] = None,
+        multi_field_req_with_options: Optional[MultiFieldReqWithOptions] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -125,8 +133,10 @@ class VerifyApi:
         """verify_post
 
 
-        :param multi_field_req:
-        :type multi_field_req: MultiFieldReq
+        :param v:
+        :type v: str
+        :param multi_field_req_with_options:
+        :type multi_field_req_with_options: MultiFieldReqWithOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -150,7 +160,8 @@ class VerifyApi:
         """ # noqa: E501
 
         _param = self._verify_post_serialize(
-            multi_field_req=multi_field_req,
+            v=v,
+            multi_field_req_with_options=multi_field_req_with_options,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -159,12 +170,15 @@ class VerifyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "VerifyResponse",
+            '201': "VerifyResponse",
+            '400': "StatusResponseWithMessage",
+            '410': "StatusResponseWithMessage",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
-        response_data.read()
+        await response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
@@ -172,9 +186,10 @@ class VerifyApi:
 
 
     @validate_call
-    def verify_post_without_preload_content(
+    async def verify_post_without_preload_content(
         self,
-        multi_field_req: Optional[MultiFieldReq] = None,
+        v: Optional[StrictStr] = None,
+        multi_field_req_with_options: Optional[MultiFieldReqWithOptions] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -191,8 +206,10 @@ class VerifyApi:
         """verify_post
 
 
-        :param multi_field_req:
-        :type multi_field_req: MultiFieldReq
+        :param v:
+        :type v: str
+        :param multi_field_req_with_options:
+        :type multi_field_req_with_options: MultiFieldReqWithOptions
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -216,7 +233,8 @@ class VerifyApi:
         """ # noqa: E501
 
         _param = self._verify_post_serialize(
-            multi_field_req=multi_field_req,
+            v=v,
+            multi_field_req_with_options=multi_field_req_with_options,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -225,8 +243,11 @@ class VerifyApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "VerifyResponse",
+            '201': "VerifyResponse",
+            '400': "StatusResponseWithMessage",
+            '410': "StatusResponseWithMessage",
         }
-        response_data = self.api_client.call_api(
+        response_data = await self.api_client.call_api(
             *_param,
             _request_timeout=_request_timeout
         )
@@ -235,7 +256,8 @@ class VerifyApi:
 
     def _verify_post_serialize(
         self,
-        multi_field_req,
+        v,
+        multi_field_req_with_options,
         _request_auth,
         _content_type,
         _headers,
@@ -251,16 +273,22 @@ class VerifyApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
         # process the query parameters
+        if v is not None:
+            
+            _query_params.append(('v', v))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if multi_field_req is not None:
-            _body_params = multi_field_req
+        if multi_field_req_with_options is not None:
+            _body_params = multi_field_req_with_options
 
 
         # set the HTTP header `Accept`

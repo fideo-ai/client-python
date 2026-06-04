@@ -25,6 +25,7 @@ from fideo_api.models.person_name_req import PersonNameReq
 from fideo_api.models.social_profile_req import SocialProfileReq
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class MultiFieldReq(BaseModel):
     """
@@ -48,16 +49,16 @@ class MultiFieldReq(BaseModel):
     partner_keys: Optional[Dict[str, StrictStr]] = Field(default=None, alias="partnerKeys")
     li_nonid: Optional[StrictStr] = None
     panorama_id: Optional[StrictStr] = Field(default=None, alias="panoramaId")
-    placekey: Optional[StrictStr] = None
     generate_pid: Optional[StrictBool] = Field(default=None, alias="generatePid")
     email: Optional[StrictStr] = None
     phone: Optional[StrictStr] = None
     profile: Optional[SocialProfileReq] = None
     maid: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "placekey", "generatePid", "email", "phone", "profile", "maid"]
+    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "generatePid", "email", "phone", "profile", "maid"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -69,8 +70,7 @@ class MultiFieldReq(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
