@@ -41,7 +41,7 @@ class MultiFieldReqWithOptions(MultiFieldReq):
     pattern_interval: Optional[StrictStr] = Field(default=None, description="Optional signal-pattern interval to decorate signal email responses", alias="patternInterval")
     countries: Optional[List[StrictStr]] = None
     excluded_countries: Optional[List[StrictStr]] = Field(default=None, alias="excludedCountries")
-    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "generatePid", "email", "phone", "profile", "maid", "infer", "confidence", "birthday", "ipAddress", "sessionId", "patternInterval", "countries", "excludedCountries"]
+    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "ssns", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "generatePid", "email", "phone", "profile", "maid", "infer", "confidence", "birthday", "ipAddress", "sessionId", "patternInterval", "countries", "excludedCountries"]
 
     @field_validator('pattern_interval')
     def pattern_interval_validate_enum(cls, value):
@@ -142,6 +142,7 @@ class MultiFieldReqWithOptions(MultiFieldReq):
             "organization": obj.get("organization"),
             "emails": obj.get("emails"),
             "phones": obj.get("phones"),
+            "ssns": obj.get("ssns"),
             "profiles": [SocialProfileReq.from_dict(_item) for _item in obj["profiles"]] if obj.get("profiles") is not None else None,
             "maids": obj.get("maids"),
             "name": PersonNameReq.from_dict(obj["name"]) if obj.get("name") is not None else None,
