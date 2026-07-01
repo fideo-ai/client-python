@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **organization** | **str** |  | [optional] 
 **emails** | **List[str]** |  | [optional] 
 **phones** | **List[str]** |  | [optional] 
+**ssns** | **List[str]** | Full SSN values as digits/dashes or SHA-256 hex digests. Verify accepts at most one. | [optional] 
 **profiles** | [**List[SocialProfileReq]**](SocialProfileReq.md) |  | [optional] 
 **maids** | **List[str]** |  | [optional] 
 **name** | [**PersonNameReq**](PersonNameReq.md) |  | [optional] 
