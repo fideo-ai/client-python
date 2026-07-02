@@ -43,6 +43,7 @@ class MultiFieldReq(BaseModel):
     organization: Optional[StrictStr] = None
     emails: Optional[List[StrictStr]] = None
     phones: Optional[List[StrictStr]] = None
+    ssn: Optional[StrictStr] = Field(default=None, description="Singular shortcut for one SSN value. Internally equivalent to ssns with one item.")
     ssns: Optional[List[StrictStr]] = Field(default=None, description="Full SSN values as digits/dashes or SHA-256 hex digests. Verify accepts at most one.")
     profiles: Optional[List[SocialProfileReq]] = None
     maids: Optional[List[StrictStr]] = None
@@ -55,7 +56,7 @@ class MultiFieldReq(BaseModel):
     phone: Optional[StrictStr] = None
     profile: Optional[SocialProfileReq] = None
     maid: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "ssns", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "generatePid", "email", "phone", "profile", "maid"]
+    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "ssn", "ssns", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "generatePid", "email", "phone", "profile", "maid"]
 
     model_config = ConfigDict(
         validate_by_name=True,
