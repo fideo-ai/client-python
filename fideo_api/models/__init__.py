@@ -26,6 +26,8 @@ from fideo_api.models.employment_date import EmploymentDate
 from fideo_api.models.evidence import Evidence
 from fideo_api.models.ip_country import IPCountry
 from fideo_api.models.ip_address import IpAddress
+from fideo_api.models.lens_graph_request import LensGraphRequest
+from fideo_api.models.lens_graph_response import LensGraphResponse
 from fideo_api.models.location import Location
 from fideo_api.models.location_req import LocationReq
 from fideo_api.models.location_type import LocationType
