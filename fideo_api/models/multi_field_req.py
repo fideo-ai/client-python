@@ -49,14 +49,12 @@ class MultiFieldReq(BaseModel):
     maids: Optional[List[StrictStr]] = None
     name: Optional[PersonNameReq] = None
     partner_keys: Optional[Dict[str, StrictStr]] = Field(default=None, alias="partnerKeys")
-    li_nonid: Optional[StrictStr] = None
-    panorama_id: Optional[StrictStr] = Field(default=None, alias="panoramaId")
     generate_pid: Optional[StrictBool] = Field(default=None, alias="generatePid")
     email: Optional[StrictStr] = None
     phone: Optional[StrictStr] = None
     profile: Optional[SocialProfileReq] = None
     maid: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "ssn", "ssns", "profiles", "maids", "name", "partnerKeys", "li_nonid", "panoramaId", "generatePid", "email", "phone", "profile", "maid"]
+    __properties: ClassVar[List[str]] = ["twitter", "linkedin", "recordId", "personId", "partnerId", "location", "avatar", "website", "title", "organization", "emails", "phones", "ssn", "ssns", "profiles", "maids", "name", "partnerKeys", "generatePid", "email", "phone", "profile", "maid"]
 
     model_config = ConfigDict(
         validate_by_name=True,

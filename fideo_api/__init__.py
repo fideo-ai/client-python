@@ -20,6 +20,8 @@ __version__ = "1.0.4"
 # Define package exports
 __all__ = [
     "BetaApi",
+    "LensApi",
+    "PrefillApi",
     "SignalsApi",
     "VerifyApi",
     "ApiResponse",
@@ -43,6 +45,8 @@ __all__ = [
     "Evidence",
     "IPCountry",
     "IpAddress",
+    "LensGraphRequest",
+    "LensGraphResponse",
     "Location",
     "LocationReq",
     "LocationType",
@@ -53,6 +57,8 @@ __all__ = [
     "PersonNameReq",
     "Phone",
     "Photo",
+    "PrefillEvaluation",
+    "PrefillResponse",
     "ScoreDetails",
     "SignalPatternRecencyResponse",
     "SignalPatternResponseUnit",
@@ -71,6 +77,8 @@ __all__ = [
 
 # import apis into sdk package
 from fideo_api.api.beta_api import BetaApi as BetaApi
+from fideo_api.api.lens_api import LensApi as LensApi
+from fideo_api.api.prefill_api import PrefillApi as PrefillApi
 from fideo_api.api.signals_api import SignalsApi as SignalsApi
 from fideo_api.api.verify_api import VerifyApi as VerifyApi
 
@@ -98,6 +106,8 @@ from fideo_api.models.employment_date import EmploymentDate as EmploymentDate
 from fideo_api.models.evidence import Evidence as Evidence
 from fideo_api.models.ip_country import IPCountry as IPCountry
 from fideo_api.models.ip_address import IpAddress as IpAddress
+from fideo_api.models.lens_graph_request import LensGraphRequest as LensGraphRequest
+from fideo_api.models.lens_graph_response import LensGraphResponse as LensGraphResponse
 from fideo_api.models.location import Location as Location
 from fideo_api.models.location_req import LocationReq as LocationReq
 from fideo_api.models.location_type import LocationType as LocationType
@@ -108,6 +118,8 @@ from fideo_api.models.name_with_alias import NameWithAlias as NameWithAlias
 from fideo_api.models.person_name_req import PersonNameReq as PersonNameReq
 from fideo_api.models.phone import Phone as Phone
 from fideo_api.models.photo import Photo as Photo
+from fideo_api.models.prefill_evaluation import PrefillEvaluation as PrefillEvaluation
+from fideo_api.models.prefill_response import PrefillResponse as PrefillResponse
 from fideo_api.models.score_details import ScoreDetails as ScoreDetails
 from fideo_api.models.signal_pattern_recency_response import SignalPatternRecencyResponse as SignalPatternRecencyResponse
 from fideo_api.models.signal_pattern_response_unit import SignalPatternResponseUnit as SignalPatternResponseUnit

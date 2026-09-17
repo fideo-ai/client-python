@@ -1,14 +1,18 @@
-# fideo_api.VerifyApi
+# fideo_api.LensApi
 
 All URIs are relative to *https://api.fideo.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**verify_post**](VerifyApi.md#verify_post) | **POST** /verify | 
+[**lens_graph**](LensApi.md#lens_graph) | **POST** /lens.graph | Query the Lens graph
 
 
-# **verify_post**
-> VerifyResponse verify_post(v=v, multi_field_req_with_options=multi_field_req_with_options)
+# **lens_graph**
+> LensGraphResponse lens_graph(lens_graph_request=lens_graph_request)
+
+Query the Lens graph
+
+Query raw or expanded Lens graph edges. Product and datapack entitlements are derived from the account contract, not from the request body.
 
 ### Example
 
@@ -16,8 +20,8 @@ Method | HTTP request | Description
 
 ```python
 import fideo_api
-from fideo_api.models.multi_field_req_with_options import MultiFieldReqWithOptions
-from fideo_api.models.verify_response import VerifyResponse
+from fideo_api.models.lens_graph_request import LensGraphRequest
+from fideo_api.models.lens_graph_response import LensGraphResponse
 from fideo_api.rest import ApiException
 from pprint import pprint
 
@@ -40,16 +44,16 @@ configuration = fideo_api.Configuration(
 # Enter a context with an instance of the API client
 async with fideo_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = fideo_api.VerifyApi(api_client)
-    v = 'v_example' # str |  (optional)
-    multi_field_req_with_options = fideo_api.MultiFieldReqWithOptions() # MultiFieldReqWithOptions |  (optional)
+    api_instance = fideo_api.LensApi(api_client)
+    lens_graph_request = fideo_api.LensGraphRequest() # LensGraphRequest |  (optional)
 
     try:
-        api_response = await api_instance.verify_post(v=v, multi_field_req_with_options=multi_field_req_with_options)
-        print("The response of VerifyApi->verify_post:\n")
+        # Query the Lens graph
+        api_response = await api_instance.lens_graph(lens_graph_request=lens_graph_request)
+        print("The response of LensApi->lens_graph:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling VerifyApi->verify_post: %s\n" % e)
+        print("Exception when calling LensApi->lens_graph: %s\n" % e)
 ```
 
 
@@ -59,12 +63,11 @@ async with fideo_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **v** | **str**|  | [optional] 
- **multi_field_req_with_options** | [**MultiFieldReqWithOptions**](MultiFieldReqWithOptions.md)|  | [optional] 
+ **lens_graph_request** | [**LensGraphRequest**](LensGraphRequest.md)|  | [optional] 
 
 ### Return type
 
-[**VerifyResponse**](VerifyResponse.md)
+[**LensGraphResponse**](LensGraphResponse.md)
 
 ### Authorization
 
@@ -79,11 +82,10 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  * X-Fideo-Limit -  <br>  * X-Fideo-Usage -  <br>  |
-**201** | Created new verify session |  * X-Fideo-Limit -  <br>  * X-Fideo-Usage -  <br>  |
+**200** | Successful response |  * X-Fideo-Limit -  <br>  * X-Fideo-Usage -  <br>  |
 **400** | Bad request |  -  |
-**410** | Claimed or deleted data |  -  |
-**429** | Verify trial usage limit reached |  * X-Fideo-Limit -  <br>  * X-Fideo-Usage -  <br>  |
+**403** | Forbidden |  -  |
+**429** | Lens usage limit reached |  * X-Fideo-Limit -  <br>  * X-Fideo-Usage -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

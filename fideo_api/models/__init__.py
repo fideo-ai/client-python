@@ -26,6 +26,8 @@ from fideo_api.models.employment_date import EmploymentDate
 from fideo_api.models.evidence import Evidence
 from fideo_api.models.ip_country import IPCountry
 from fideo_api.models.ip_address import IpAddress
+from fideo_api.models.lens_graph_request import LensGraphRequest
+from fideo_api.models.lens_graph_response import LensGraphResponse
 from fideo_api.models.location import Location
 from fideo_api.models.location_req import LocationReq
 from fideo_api.models.location_type import LocationType
@@ -36,6 +38,8 @@ from fideo_api.models.name_with_alias import NameWithAlias
 from fideo_api.models.person_name_req import PersonNameReq
 from fideo_api.models.phone import Phone
 from fideo_api.models.photo import Photo
+from fideo_api.models.prefill_evaluation import PrefillEvaluation
+from fideo_api.models.prefill_response import PrefillResponse
 from fideo_api.models.score_details import ScoreDetails
 from fideo_api.models.signal_pattern_recency_response import SignalPatternRecencyResponse
 from fideo_api.models.signal_pattern_response_unit import SignalPatternResponseUnit
