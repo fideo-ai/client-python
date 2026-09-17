@@ -28,6 +28,9 @@ docs/NameWithAlias.md
 docs/PersonNameReq.md
 docs/Phone.md
 docs/Photo.md
+docs/PrefillApi.md
+docs/PrefillEvaluation.md
+docs/PrefillResponse.md
 docs/ScoreDetails.md
 docs/SignalPatternRecencyResponse.md
 docs/SignalPatternResponseUnit.md
@@ -48,6 +51,7 @@ fideo_api/__init__.py
 fideo_api/api/__init__.py
 fideo_api/api/beta_api.py
 fideo_api/api/lens_api.py
+fideo_api/api/prefill_api.py
 fideo_api/api/signals_api.py
 fideo_api/api/verify_api.py
 fideo_api/api_client.py
@@ -79,6 +83,8 @@ fideo_api/models/name_with_alias.py
 fideo_api/models/person_name_req.py
 fideo_api/models/phone.py
 fideo_api/models/photo.py
+fideo_api/models/prefill_evaluation.py
+fideo_api/models/prefill_response.py
 fideo_api/models/score_details.py
 fideo_api/models/signal_pattern_recency_response.py
 fideo_api/models/signal_pattern_response_unit.py
@@ -107,6 +113,9 @@ test/test_check_result.py
 test/test_lens_api.py
 test/test_lens_graph_request.py
 test/test_lens_graph_response.py
+test/test_prefill_api.py
+test/test_prefill_evaluation.py
+test/test_prefill_response.py
 test/test_signal_pattern_recency_response.py
 test/test_signal_pattern_response_unit.py
 test/test_signal_pattern_response_unit_count.py

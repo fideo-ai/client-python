@@ -100,6 +100,7 @@ class VerifyApi:
             '201': "VerifyResponse",
             '400': "StatusResponseWithMessage",
             '410': "StatusResponseWithMessage",
+            '429': "StatusResponseWithMessage",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -173,6 +174,7 @@ class VerifyApi:
             '201': "VerifyResponse",
             '400': "StatusResponseWithMessage",
             '410': "StatusResponseWithMessage",
+            '429': "StatusResponseWithMessage",
         }
         response_data = await self.api_client.call_api(
             *_param,
@@ -246,6 +248,7 @@ class VerifyApi:
             '201': "VerifyResponse",
             '400': "StatusResponseWithMessage",
             '410': "StatusResponseWithMessage",
+            '429': "StatusResponseWithMessage",
         }
         response_data = await self.api_client.call_api(
             *_param,

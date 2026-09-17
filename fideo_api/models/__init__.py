@@ -38,6 +38,8 @@ from fideo_api.models.name_with_alias import NameWithAlias
 from fideo_api.models.person_name_req import PersonNameReq
 from fideo_api.models.phone import Phone
 from fideo_api.models.photo import Photo
+from fideo_api.models.prefill_evaluation import PrefillEvaluation
+from fideo_api.models.prefill_response import PrefillResponse
 from fideo_api.models.score_details import ScoreDetails
 from fideo_api.models.signal_pattern_recency_response import SignalPatternRecencyResponse
 from fideo_api.models.signal_pattern_response_unit import SignalPatternResponseUnit
