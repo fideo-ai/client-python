@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **age** | **int** |  | [optional] 
 **age_range** | **str** |  | [optional] 
+**birthday** | **str** |  | [optional] 
 **gender** | **str** |  | [optional] 
 **location_general** | **str** |  | [optional] 
 

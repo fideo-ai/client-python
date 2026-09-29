@@ -34,7 +34,7 @@ class PrefillResponse(BaseModel):
     session_id: UUID = Field(description="UUIDv7 session identifier to send with reviewed identity data.", alias="sessionId")
     status: StrictStr
     individual: Optional[MultiFieldReqWithOptions] = Field(default=None, description="Resolved identity in the same multifield shape accepted by the follow-up Prefill request. The caller may review or edit these values and resubmit them with the returned sessionId.")
-    evaluation: Optional[PrefillEvaluation] = None
+    evaluation: Optional[PrefillEvaluation] = Field(default=None, description="Risk score and Verify checks for resolved fields on an initial match, the original phone fields on an initial no-match, or the fields sent with a sessionId on a reviewed request.")
     __properties: ClassVar[List[str]] = ["sessionId", "status", "individual", "evaluation"]
 
     @field_validator('status')

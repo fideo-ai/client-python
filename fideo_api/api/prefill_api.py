@@ -56,7 +56,7 @@ class PrefillApi:
     ) -> PrefillResponse:
         """Resolve or evaluate onboarding identity fields
 
-        The customer is responsible for proving phone possession before the initial request. Omit sessionId to resolve identity fields from a phone. Send the returned sessionId with reviewed or edited identity fields to receive a Verify evaluation. Recent session IDs are reused; valid session IDs older than 10 minutes start a new session.
+        The customer is responsible for proving phone possession before the initial request. Omit sessionId to resolve identity fields from a phone and receive their evaluation. Send the returned sessionId with reviewed or edited identity fields to reevaluate them. Recent session IDs are reused; valid session IDs older than 10 minutes start a new session.
 
         :param multi_field_req_with_options: (required)
         :type multi_field_req_with_options: MultiFieldReqWithOptions
@@ -127,7 +127,7 @@ class PrefillApi:
     ) -> ApiResponse[PrefillResponse]:
         """Resolve or evaluate onboarding identity fields
 
-        The customer is responsible for proving phone possession before the initial request. Omit sessionId to resolve identity fields from a phone. Send the returned sessionId with reviewed or edited identity fields to receive a Verify evaluation. Recent session IDs are reused; valid session IDs older than 10 minutes start a new session.
+        The customer is responsible for proving phone possession before the initial request. Omit sessionId to resolve identity fields from a phone and receive their evaluation. Send the returned sessionId with reviewed or edited identity fields to reevaluate them. Recent session IDs are reused; valid session IDs older than 10 minutes start a new session.
 
         :param multi_field_req_with_options: (required)
         :type multi_field_req_with_options: MultiFieldReqWithOptions
@@ -198,7 +198,7 @@ class PrefillApi:
     ) -> RESTResponseType:
         """Resolve or evaluate onboarding identity fields
 
-        The customer is responsible for proving phone possession before the initial request. Omit sessionId to resolve identity fields from a phone. Send the returned sessionId with reviewed or edited identity fields to receive a Verify evaluation. Recent session IDs are reused; valid session IDs older than 10 minutes start a new session.
+        The customer is responsible for proving phone possession before the initial request. Omit sessionId to resolve identity fields from a phone and receive their evaluation. Send the returned sessionId with reviewed or edited identity fields to reevaluate them. Recent session IDs are reused; valid session IDs older than 10 minutes start a new session.
 
         :param multi_field_req_with_options: (required)
         :type multi_field_req_with_options: MultiFieldReqWithOptions
