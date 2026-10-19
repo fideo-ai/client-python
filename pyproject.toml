@@ -13,6 +13,8 @@ requires-python = ">=3.10"
 dependencies = [
   "python-dateutil (>=2.8.2)",
   "httpx (>=0.28.1)",
+  # Require the security fixes in HTTPX's transitive AnyIO dependency.
+  "anyio (>=4.14.2)",
   "pydantic (>=2.11)",
   "typing-extensions (>=4.7.1)",
 ]
