@@ -30,10 +30,9 @@ class Demographics(BaseModel):
     """ # noqa: E501
     age: Optional[StrictInt] = None
     age_range: Optional[StrictStr] = Field(default=None, alias="ageRange")
-    birthday: Optional[StrictStr] = None
     gender: Optional[StrictStr] = None
     location_general: Optional[StrictStr] = Field(default=None, alias="locationGeneral")
-    __properties: ClassVar[List[str]] = ["age", "ageRange", "birthday", "gender", "locationGeneral"]
+    __properties: ClassVar[List[str]] = ["age", "ageRange", "gender", "locationGeneral"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -88,7 +87,6 @@ class Demographics(BaseModel):
         _obj = cls.model_validate({
             "age": obj.get("age"),
             "ageRange": obj.get("ageRange"),
-            "birthday": obj.get("birthday"),
             "gender": obj.get("gender"),
             "locationGeneral": obj.get("locationGeneral")
         })

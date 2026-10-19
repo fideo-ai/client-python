@@ -97,8 +97,6 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BetaApi* | [**get_signal_patterns_summary**](docs/BetaApi.md#get_signal_patterns_summary) | **POST** /beta/signals/patterns/summary | Get signal patterns summary
 *BetaApi* | [**get_signal_patterns_timeseries**](docs/BetaApi.md#get_signal_patterns_timeseries) | **POST** /beta/signals/patterns/timeseries | Get signal patterns timeseries
-*LensApi* | [**lens_graph**](docs/LensApi.md#lens_graph) | **POST** /lens.graph | Query the Lens graph
-*PrefillApi* | [**prefill**](docs/PrefillApi.md#prefill) | **POST** /prefill | Resolve or evaluate onboarding identity fields
 *SignalsApi* | [**signals_post**](docs/SignalsApi.md#signals_post) | **POST** /signals | 
 *VerifyApi* | [**verify_post**](docs/VerifyApi.md#verify_post) | **POST** /verify | 
 
@@ -117,8 +115,6 @@ Class | Method | HTTP request | Description
  - [Evidence](docs/Evidence.md)
  - [IPCountry](docs/IPCountry.md)
  - [IpAddress](docs/IpAddress.md)
- - [LensGraphRequest](docs/LensGraphRequest.md)
- - [LensGraphResponse](docs/LensGraphResponse.md)
  - [Location](docs/Location.md)
  - [LocationReq](docs/LocationReq.md)
  - [LocationType](docs/LocationType.md)
@@ -129,8 +125,6 @@ Class | Method | HTTP request | Description
  - [PersonNameReq](docs/PersonNameReq.md)
  - [Phone](docs/Phone.md)
  - [Photo](docs/Photo.md)
- - [PrefillEvaluation](docs/PrefillEvaluation.md)
- - [PrefillResponse](docs/PrefillResponse.md)
  - [ScoreDetails](docs/ScoreDetails.md)
  - [SignalPatternRecencyResponse](docs/SignalPatternRecencyResponse.md)
  - [SignalPatternResponseUnit](docs/SignalPatternResponseUnit.md)
