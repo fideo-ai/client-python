@@ -25,8 +25,6 @@ PYTHON_REQUIRES = ">= 3.10"
 REQUIRES = [
     "python-dateutil >= 2.8.2",
     "httpx >= 0.28.1",
-    # Keep legacy installation metadata consistent with pyproject.toml.
-    "anyio >= 4.14.2",
     "pydantic >= 2.11",
     "typing-extensions >= 4.7.1",
 ]

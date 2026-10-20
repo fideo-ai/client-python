@@ -79,10 +79,11 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | OK |  -  |
-**201** | Created new verify session |  -  |
+**200** | OK |  * X-Fideo-Limit -  <br>  * X-Fideo-Usage -  <br>  |
+**201** | Created new verify session |  * X-Fideo-Limit -  <br>  * X-Fideo-Usage -  <br>  |
 **400** | Bad request |  -  |
 **410** | Claimed or deleted data |  -  |
+**429** | Verify trial usage limit reached |  * X-Fideo-Limit -  <br>  * X-Fideo-Usage -  <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

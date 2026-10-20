@@ -23,8 +23,6 @@ Name | Type | Description | Notes
 **maids** | **List[str]** |  | [optional] 
 **name** | [**PersonNameReq**](PersonNameReq.md) |  | [optional] 
 **partner_keys** | **Dict[str, str]** |  | [optional] 
-**li_nonid** | **str** |  | [optional] 
-**panorama_id** | **str** |  | [optional] 
 **generate_pid** | **bool** |  | [optional] 
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
